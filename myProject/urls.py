@@ -25,8 +25,9 @@ from rest_framework import routers
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^api/customers/$', customers_list),
-    url(r'^api/customers/(?P<pk>[0-9]+)$', customers_detail),
-    url(r'^api/users/$', UserViewSet.as_view()),
+    # url(r'^api/customers/$', customers_list),
+    # url(r'^api/customers/(?P<pk>[0-9]+)$', customers_detail),
+
+    url(r'^api/', include(("customers.api.urls", "customers"), namespace='customers')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
