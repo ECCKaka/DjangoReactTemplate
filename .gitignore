@@ -472,4 +472,6 @@ DerivedData/
 pyvenv.cfg
 pip-selfcheck.json
 
+# react
+package-lock.json
 # End of https://www.gitignore.io/api/node,venv,django,reactnative
