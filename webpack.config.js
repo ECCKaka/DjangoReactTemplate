@@ -19,6 +19,10 @@ module.exports = {
       }
     ]
   },
+  devServer: {
+    stats: 'errors-only',
+    open: true
+  },
   output: {
     path: __dirname + "/src/",
     filename: "client.min.js"
