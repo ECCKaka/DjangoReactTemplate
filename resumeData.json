@@ -1,0 +1,134 @@
+{
+  "main": {
+    "name":"Zuofu Li",
+    "occupation":"Student",
+    "description":"I am a fourth year student at the University of Alberta. My major is Computing Science with Software Practice",
+    "image":"profilepic.jpg",
+    "bio":"I am a patient person. I work very hard for each task. Team work is necessary for programmers, I always update my status on what I am up to with my teammates. ",
+    "contactmessage":"Here is where you should write your message to readers to have them get in contact with you.",
+    "email": "zuofu@ualberta.ca",
+    "phone": "(780) 780-3329",
+    "address":{
+      "street":"8510 111st",
+      "city":"Edmonton",
+      "province":"AB",
+      "zip": "T6G 1H7"
+    },
+    "website": "https://chrisfufu.github.io/resume/#/zuofu",
+    "resumedownload":"./images/Zuofu_Resume.pdf",
+    "social":[
+      {
+        "name":"facebook",
+        "url":"",
+        "className":"fa fa-facebook"
+      },
+      {
+        "name":"twitter",
+        "url":"",
+        "className":"fa fa-twitter"
+      },
+      {
+        "name":"google-plus",
+        "url":"",
+        "className":"fa fa-google-plus"
+      },
+      {
+        "name":"linkedin",
+        "url":"",
+        "className":"fa fa-linkedin"
+      },
+      {
+        "name":"instagram",
+        "url":"",
+        "className":"fa fa-instagram"
+      },
+      {
+        "name":"github",
+        "url":"",
+        "className":"fa fa-github"
+      },
+      {
+        "name":"skype",
+        "url":"",
+        "className":"fa fa-skype"
+      }
+    ]
+  },
+  "resume":{
+    "skillmessage":"Here you can create a short write-up of your skills to show off to employers",
+    "education":[
+      {
+        "school":"University of Alberta",
+        "degree":"Bachelor of Science Specialization Computing Science with Software Practice",
+        "graduated":"June 2020",
+        "description":""
+      }
+    ],
+    "work":[
+      {
+        "company":"University of Alberta",
+        "title":"Junior Programmer",
+        "years":"May 2018 - Present",
+        "description":"Full Stack Developer, Data Mining"
+      },
+      {
+        "company":"Vertex Global Education",
+        "title":"Computing Science Tutor",
+        "years":"Dec 2018 - Present",
+        "description":"Tutor University students computing science courses."
+      }
+    ],
+    "volunteer":[
+      {
+        "service":"University of Alberta",
+        "jobs":"International Student Services",
+        "years":"Jan 2016 - Present",
+        "description":"Office Volunteer, Event Assistant, Bridges Speaker"
+      },
+      {
+        "service":"New Chinese Generation",
+        "jobs":"Crew Member",
+        "years":"Jan 2018 - Present",
+        "description":"Help New Students"
+      }
+    ],
+    "skills":[
+      {
+        "name":"Python",
+        "level":"85%"
+      },
+      {
+        "name":"Django",
+        "level":"90%"
+      },
+      {
+        "name":"ReactJs",
+        "level":"75%"
+      },
+      {
+        "name":"R",
+        "level":"65%"
+      },
+      {
+        "name":"CSS",
+        "level":"90%"
+      },
+      {
+        "name":"C",
+        "level":"50%"
+      }
+    ]
+  },
+  "testimonials":{
+    "testimonials":[
+      {
+        "text":"Here you should write some nice things that someone has said about you. No lies though, employers can tell when you are lying.",
+        "user":"Kareem Abdul Jabbar"
+      },
+      {
+        "text":"That Tim Baker must be one of the most brilliant developers I've ever met! It is amazing that nobody has hired him yet. Hey you, you should hire this guy, he may be fresh out of University and have zero on the job experience but I am confident that he will be one of your best developers in no time!",
+        "user":"Steve Wozniak... impersonator"
+      }
+    ]
+  }
+}
