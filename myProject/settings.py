@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'customers'
+    'customers',
+    'livereload'
 ]
 
 REST_FRAMEWORK = {
@@ -55,8 +56,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware'
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+MIDDLEWARE_CLASSES = (
+    'livereload.middleware.LiveReloadScript',
+)
 
 ROOT_URLCONF = 'myProject.urls'
 
@@ -129,7 +134,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CORS_ORIGIN_ALLOW_ALL = False
-#
+
 CORS_ORIGIN_WHITELIST = (
        'http://localhost:3000',
 )

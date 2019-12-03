@@ -1,5 +1,5 @@
 export default function reducer(state={
-    tweets: [],
+    resume: [],
     fetching: false,
     fetched: false,
     error: null,
@@ -10,6 +10,7 @@ export default function reducer(state={
         return {...state, fetching: true}
       }
       case "FETCH_TWEETS_REJECTED": {
+        console.log(action.payload);
         return {...state, fetching: false, error: action.payload}
       }
       case "FETCH_TWEETS_FULFILLED": {
@@ -17,30 +18,30 @@ export default function reducer(state={
           ...state,
           fetching: false,
           fetched: true,
-          tweets: action.payload,
+          resume: action.payload,
         }
       }
       case "ADD_TWEET": {
         return {
           ...state,
-          tweets: [...state.tweets, action.payload],
+          resume: [...state.resume, action.payload],
         }
       }
       case "UPDATE_TWEET": {
         const { id, text } = action.payload
-        const newTweets = [...state.tweets]
+        const newTweets = [...state.resume]
         const tweetToUpdate = newTweets.findIndex(tweet => tweet.id === id)
         newTweets[tweetToUpdate] = action.payload;
 
         return {
           ...state,
-          tweets: newTweets,
+          resume: newTweets,
         }
       }
       case "DELETE_TWEET": {
         return {
           ...state,
-          tweets: state.tweets.filter(tweet => tweet.id !== action.payload),
+          resume: state.resume.filter(tweet => tweet.id !== action.payload),
         }
       }
     }
