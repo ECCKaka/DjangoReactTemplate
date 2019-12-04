@@ -6,9 +6,12 @@ django-filter==2.2.0
 django-heroku==0.3.1
 django-livereload-server==0.3.2
 djangorestframework==3.10.3
+djangorestframework-bulk==0.2.1
+djangorestframework-jwt==1.11.0
 gunicorn==20.0.0
 Markdown==3.1.1
 psycopg2==2.8.4
+PyJWT==1.7.1
 pytz==2019.3
 six==1.13.0
 soupsieve==1.9.5
