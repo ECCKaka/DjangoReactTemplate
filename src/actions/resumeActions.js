@@ -1,20 +1,18 @@
 import axios from "axios";
+import { URL_PREFIX } from './utils';
 
-export function fetchTweets() {
+// axios.get("http://127.0.0.1:8000/api/user/1/" )
+export function fetchResume(id) {
   return function(dispatch) {
     dispatch({type: "FETCH_TWEETS"});
-    
-    /* 
-      http://rest.learncode.academy is a public test server, so another user's experimentation can break your tests
-      If you get console errors due to bad data:
-      - change "reacttest" below to any other username
-      - post some tweets to http://rest.learncode.academy/api/yourusername/tweets
-    */
-    axios.get("http://rest.learncode.academy/api/reacttest/tweets")
+
+    axios.get(URL_PREFIX + "/api/user/" + id + "/" )
       .then((response) => {
+        console.log(response, 'response', URL_PREFIX + "/api/user/" + id);
         dispatch({type: "FETCH_TWEETS_FULFILLED", payload: response.data})
       })
       .catch((err) => {
+        console.log(err, 'err', URL_PREFIX + "/api/user/" + id);
         dispatch({type: "FETCH_TWEETS_REJECTED", payload: err})
       })
   }
