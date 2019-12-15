@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'livereload',
 
     # Project apps
-    'customers'
+    'myApp'
 ]
 
 REST_FRAMEWORK = {

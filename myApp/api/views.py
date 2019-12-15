@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view
 from rest_framework import status
 from rest_framework.views import APIView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from customers.models import *
+from myApp.models import *
 from .serializers import *
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 from django.contrib.auth.models import User, Group
