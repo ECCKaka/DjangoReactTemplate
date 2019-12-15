@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include,path
-from customers.api.views import *
+from myApp.api.views import *
 from django.conf.urls import url
 from rest_framework import routers
 
@@ -25,9 +25,9 @@ from rest_framework import routers
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # url(r'^api/customers/$', customers_list),
-    # url(r'^api/customers/(?P<pk>[0-9]+)$', customers_detail),
+    # url(r'^api/myApp/$', customers_list),
+    # url(r'^api/myApp/(?P<pk>[0-9]+)$', customers_detail),
 
-    url(r'^api/', include(("customers.api.urls", "customers"), namespace='customers')),
+    url(r'^api/', include(("myApp.api.urls", "myApp"), namespace='myApp')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

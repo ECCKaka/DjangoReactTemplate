@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from customers.models import *
+from myApp.models import *
 from django.db.models import Q
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
