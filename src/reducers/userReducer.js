@@ -36,6 +36,11 @@ export default function reducer(state={
           user: {...state.user, age: action.payload},
         }
       }
+      case "LOGIN_REJECTED": {
+        console.log(action.payload);
+        console.log('here\n\n');
+        return {...state, fetching: false, error: action.payload}
+      }
     }
 
     return state

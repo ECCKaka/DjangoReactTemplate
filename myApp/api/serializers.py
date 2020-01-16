@@ -110,7 +110,7 @@ class UserLoginSerializer(ModelSerializer):
         user_obj = None
         identifier = data["identifier"]
         password = data["password"]
-
+        print(identifier)
         if not identifier:
             raise ValidationError("A username or email is required to login.")
 

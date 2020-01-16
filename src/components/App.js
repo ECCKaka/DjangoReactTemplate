@@ -5,6 +5,13 @@ import connect from 'redux-connect-decorator'
 import { fetchUser } from "../actions/userActions"
 import { fetchResume } from "../actions/resumeActions"
 import Template from './Header';
+import Login from './login'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 @connect((store) => {
   return {
@@ -23,10 +30,17 @@ class App extends Component {
       const { user, resume } = this.props;
       console.log(this.props);
       return (
-        <div className="App">
-          <Template/>
-          <Button onClick={this.fetchResume.bind(this)}>load resume</Button>
-        </div>
+        <Router>
+          <Switch>
+            <Route exact path='/'>
+              <Template/>
+              <Button onClick={this.fetchResume.bind(this)}>load resume</Button>
+            </Route>
+            <Route exact path='/test'>
+              <Login/>
+            </Route>
+          </Switch>
+        </Router>
 
       )
 
