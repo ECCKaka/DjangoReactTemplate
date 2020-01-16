@@ -31,8 +31,6 @@ class UserCreateAPIView(CreateAPIView):
 class UserLoginAPIView(APIView):
     permission_classes = [AllowAny]
     def post(self, request, *args, **kwargs):
-        print(request.data)
-        print('\n\n\n')
         data = request.data
         serializer = UserLoginSerializer(data=data)
         if serializer.is_valid():
