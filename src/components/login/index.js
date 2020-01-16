@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
 import './index.css';
+import { Link, Redirect } from "react-router-dom";
 import connect from 'redux-connect-decorator'
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import { login } from '../../actions/userActions'
@@ -19,13 +20,16 @@ class NormalLoginForm extends React.Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
-        this.props.dispatch(login(values));
+        this.props.dispatch(login(values))
       }
     });
   };
 
   render() {
     const { getFieldDecorator } = this.props.form;
+    if(this.props.user != null){
+      return <Redirect push to='/'></Redirect>
+    }
     return (
       <Form onSubmit={this.handleSubmit} className="login-form">
         <Form.Item>

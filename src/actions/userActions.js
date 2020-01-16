@@ -47,6 +47,7 @@ export function login(data) {
       const token = response.data.token;
       localStorage.setItem('jwtToken', token);
       setAuthorizationToken(token);
+      // dispatch({type: "STOREUSER_FULFILLED", payload: info});
       dispatch({type: "LOGIN_FULFILLED", payload: response.data});
     })
     .catch((err) => {

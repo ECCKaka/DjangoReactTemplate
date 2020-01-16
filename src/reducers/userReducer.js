@@ -1,9 +1,5 @@
 export default function reducer(state={
-    user: {
-      id: null,
-      name: null,
-      age: null,
-    },
+    user: null,
     fetching: false,
     fetched: false,
     error: null,
@@ -36,11 +32,19 @@ export default function reducer(state={
           user: {...state.user, age: action.payload},
         }
       }
-      case "LOGIN_REJECTED": {
+      case "LOGIN_FULFILLED": {
         console.log(action.payload);
-        console.log('here\n\n');
+        return {
+          ...state,
+          fetching: false,
+          fetched: true,
+          user: action.payload.token,
+        }
+      }
+      case "LOGIN_REJECTED": {
         return {...state, fetching: false, error: action.payload}
       }
+      
     }
 
     return state
