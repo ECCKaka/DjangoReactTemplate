@@ -33,7 +33,7 @@ function AppNavigationBar() {
         break;
       case "home":
         updateKeys([])
-        history.push('/')
+        history.push('/home')
         break;
       case "setting":
         updateKeys([])
@@ -109,8 +109,9 @@ function AppNavigationBar() {
   //   )
   // }
   // modify page with mobile size.
+  // onClick={handleMenuOnClick}
   return (
-    <Menu mode="horizontal" openKeys={keys} onClick={handleMenuOnClick}>
+    <Menu mode="horizontal" openKeys={keys} >
       <Menu.Item style={{ marginLeft: '5vw' }} key="home">
         <Icon type="home" />
         <span>Home</span>
