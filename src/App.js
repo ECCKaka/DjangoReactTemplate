@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import Button from 'antd/es/button';
 import './App.css';
 import connect from 'redux-connect-decorator'
-import { fetchUser } from "../actions/userActions"
-import { fetchResume } from "../actions/resumeActions"
-import Template from './Header';
-import Login from './login'
+import { fetchUser } from "./actions/userActions"
+import { fetchResume } from "./actions/resumeActions"
+// import Template from './components/Header';
+import Login from './components/login'
 import {
   BrowserRouter as Router,
   Switch,
@@ -32,20 +32,16 @@ class App extends Component {
       return (
         <Router>
           <Switch>
-            <Route exact path='/'>
-              <Template/>
+            <Route exact path='/home'>
               <Button onClick={this.fetchResume.bind(this)}>load resume</Button>
             </Route>
-            <Route exact path='/test'>
+            <Route exact path='/login'>
               <Login/>
             </Route>
           </Switch>
         </Router>
-
       )
-
     }
-
 }
 
 export default App;

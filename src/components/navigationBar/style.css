@@ -1,0 +1,21 @@
+
+.layout-header-nav{
+    height: 3rem;
+
+}
+
+.layout-header-nav ul{
+    /* border: 1px;
+    border-color: black; */
+    margin-bottom: 0;
+    margin-top: 0;
+    height: 100%;
+    /* float: right; */
+    /* text-align: right */
+
+}
+
+
+.layout-header-nav-menu{
+    height: 2rem;
+}
