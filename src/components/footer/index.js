@@ -6,7 +6,7 @@ import { Layout, Icon } from "antd";
 import "./style.less";
 const { Footer } = Layout;
 
-const copyrightString = "Canada Training Group";
+const copyrightString = "React & Redux";
 // return a footer object, with a link "contact us"
 // and a facebook icon.
 const footer = (style1, style2, copyrightString) => {

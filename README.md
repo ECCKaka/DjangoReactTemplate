@@ -9,7 +9,9 @@ Created with React + Redux, Django + Django Rest Framework.
 
 ## On server:  
 ### server host: http://199.116.235.221:3000/
-### start FrontEnd: npm start &  
+### start FrontEnd:
+    -  npm run build  
+    -  serve -s build -l 3000  
 ### stop FrontEnd:   
     -  lsof -i tcp:3000
     -  kill -9 PID
