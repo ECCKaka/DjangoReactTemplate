@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 import './style.css'
 
 // hearder url
-const iconImgUrl = process.env.PUBLIC_URL + '/django-logo-big.png'
+const iconImgUrl = process.env.PUBLIC_URL + '/django.jpg'
 
 var iconStyle = {
   pc: {
@@ -49,6 +49,10 @@ function AppHeader() {
         onClick={handleIconOnClick}
         className='layout-header-logo'
         alt="icon"
+        style={{
+          width: "150px",
+          height: "100px"
+        }}
         src={iconImgUrl}>
       </img>
     </div>
