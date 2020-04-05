@@ -1,0 +1,15 @@
+
+.layout-header{
+    width: 100%;
+    /* background-image: url(https://owleventcompany.ca/wp-content/uploads/2016/06/footer-back.jpg); */
+    display: flex;
+    /* background-position: center; */
+    /* background-size: cover */
+
+}
+
+.layout-header-logo {
+    align-self: center;
+    margin: 0 auto;
+    background-color: transparent;
+}
