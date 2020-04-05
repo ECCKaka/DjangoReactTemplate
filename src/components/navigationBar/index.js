@@ -107,8 +107,8 @@ class AppNavigationBar extends React.Component {
           </Menu.ItemGroup>
         </SubMenu>
         <Menu.Item key="alipay">
-          <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
-            Navigation Four - Link
+          <a href="https://reactjs.org/" target="_blank" rel="noopener noreferrer">
+            React website - Link
           </a>
         </Menu.Item>
       </Menu>

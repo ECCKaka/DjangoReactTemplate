@@ -20,7 +20,6 @@ import {
   return {
     user: store.user.user,
     userFetched: store.user.fetched,
-    resume: store.resume.resume,
   };
 })
 class App extends Component {
@@ -32,7 +31,7 @@ class App extends Component {
     }
   }
   render() {
-    const { user, resume } = this.props;
+    const { user } = this.props;
     return (
       <Router>
         <Switch>
