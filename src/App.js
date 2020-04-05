@@ -4,7 +4,6 @@ import './App.css';
 import connect from 'redux-connect-decorator'
 import { fetchResume } from "./actions/resumeActions"
 import Registration from './components/register'
-// import Template from './components/Header';
 import Login from './components/login'
 import Home from './components/home'
 import AppNotFound from './components/notFound'
