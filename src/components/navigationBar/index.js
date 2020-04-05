@@ -1,140 +1,120 @@
 /**
  * Navigation bar component.
  */
-import React, { useState } from 'react';
-import { Icon, Menu, } from 'antd';
-import { useHistory } from "react-router-dom";
-import './style.css'
 
-const { SubMenu } = Menu
+import React from 'react';
+import ReactDOM from 'react-dom';
+import 'antd/dist/antd.css';
+import './index.css';
+import { Menu, Icon } from 'antd';
+import { logout } from '../../actions/userActions';
+import { Link, Redirect, useHistory, withRouter } from "react-router-dom";
+import {
+  MailOutlined,
+  AppstoreOutlined,
+  SettingOutlined,
+} from '@ant-design/icons';
+import { connect } from 'react-redux';
 
+const { SubMenu } = Menu;
 
-function AppNavigationBar() {
-  let [keys, updateKeys] = useState([])
-  let history = useHistory()
+@connect((store) => {
+  return {
+    user: store.user.user,
+  };
+})
+class AppNavigationBar extends React.Component {
+  state = {
+    current: 'mail',
+  };
 
-  let handleOpenChange = (e) => {
-    updateKeys(e)
-  }
-  // handle the menu onclick
-  let handleMenuOnClick = (e) => {
+  handleClick = e => {
+    console.log('click ', e.key);
     switch (e.key) {
       case "login":
-        // Auth.updateIsFirstVist(false)
-        updateKeys([])
         if (window.location.pathname !== '/') {
           // re-render home page
-          history.push('/')
+          this.props.history.push('/')
         }
         break;
       case "logout":
-        updateKeys([])
-        history.push('/unauthorized')
+        this.props.dispatch(logout())
         break;
       case "home":
-        updateKeys([])
-        history.push('/home')
-        break;
-      case "setting":
-        updateKeys([])
-        // Auth.updateUserId(null)
-        history.push('/userprofile')
-        break;
-      case "admin":
-        updateKeys([])
-        history.push('/admin')
-        break;
-      case "transaction":
-        updateKeys([])
-        history.push('/transactionhistory')
+        if (this.props.user){
+          this.props.history.push('/home')
+        }
+        else{
+          this.props.history.push('/')
+        }
         break;
       default:
-        updateKeys([])
+        this.props.history.push('/')
         break;
     }
-  }
-  // handle submenu onclick
-  let handleSubMenuOnClick = (e) => {
-    if (e.key === 'submenu') {
-      if (keys.length > 0) {
-        updateKeys([])
-      } else {
-        updateKeys(['submenu'])
-      }
-    }
-  }
+    this.setState({
+      current: e.key,
+    });
+  };
 
-  // if (Auth.isAuth()) {
-  //   return (
-  //     <Menu theme='dark' mode="horizontal" openKeys={keys} onClick={handleMenuOnClick}>
-  //       <Menu.Item style={{ marginLeft: '5vw' }} key="home">
-  //         <Icon type="home" />
-  //         <span>Home</span>
-  //       </Menu.Item>
-  //       <Menu.Item key="setting">
-  //         <Icon type="setting" />
-  //         <span>Setting</span>
-  //       </Menu.Item>
-  //       {
-  //         Auth.getAdminUser() ?
-  //         ( <Menu.Item key="admin">
-  //           <Icon type="user" />
-  //           <span>Admin</span>
-  //         </Menu.Item> ) : (
-  //         <Menu.Item key="transaction">
-  //           <Icon type="transaction" />
-  //           <span>History</span>
-  //         </Menu.Item>
-  //         )
-  //       }
-  //       <Menu.Item key="logout">
-  //         <Icon type="logout" />
-  //         <span>Log Out</span>
-  //       </Menu.Item>
-  //     </Menu>
-  //   )
-  // } else {
-  //   // the other choices with login and setting
-  //   return (
-  //     <Menu theme='dark' mode="horizontal" openKeys={keys} onClick={handleMenuOnClick}>
-  //       <Menu.Item style={{ marginLeft: '5vw' }} key="setting">
-  //         <Icon type="setting" />
-  //         <span>Setting</span>
-  //       </Menu.Item>
-  //       <Menu.Item key="login">
-  //         <Icon type="login" />
-  //         <span>Log In</span>
-  //       </Menu.Item>
-  //     </Menu>
-  //   )
-  // }
-  // modify page with mobile size.
-  // onClick={handleMenuOnClick}
-  return (
-    <Menu mode="horizontal" openKeys={keys} >
-      <Menu.Item style={{ marginLeft: '5vw' }} key="home">
-        <Icon type="home" />
-        <span>Home</span>
-      </Menu.Item>
-      <Menu.Item key="setting">
-        <Icon type="setting" />
-        <span>Setting</span>
-      </Menu.Item>
-      <Menu.Item key="admin">
-        <Icon type="user" />
-        <span>Admin</span>
-      </Menu.Item>
-      <Menu.Item key="transaction">
-        <Icon type="transaction" />
-        <span>History</span>
-      </Menu.Item>
-      <Menu.Item key="login">
-        <Icon type="login" />
-        <span>Log In</span>
-      </Menu.Item>
-    </Menu>
-  )
+  render() {
+    return (
+      <Menu onClick={this.handleClick} mode="horizontal">
+        <Menu.Item key="home">
+          <Icon type="home" />
+          Home
+        </Menu.Item>
+        {
+          this.props.user ? (
+            <Menu.Item key="logout">
+              <Icon type="logout" />
+              Logout
+            </Menu.Item>
+          ) : (
+            <Menu.Item key="login">
+              <Icon type="login" />
+              Login
+            </Menu.Item>
+          )
+        }
+        <Menu.Item key="setting">
+          <Icon type="setting" />
+          Setting
+        </Menu.Item>
+        {
+          this.props.user &&
+          <Menu.Item key="admin">
+            <Icon type="user" />
+            Admin
+          </Menu.Item>
+        }
 
+        <SubMenu
+          title={
+            <span className="submenu-title-wrapper">
+              <SettingOutlined />
+              Navigation Three - Submenu
+            </span>
+          }
+        >
+          <Menu.ItemGroup title="Item 1">
+            <Menu.Item key="setting:1">Option 1</Menu.Item>
+            <Menu.Item key="setting:2">Option 2</Menu.Item>
+          </Menu.ItemGroup>
+          <Menu.ItemGroup title="Item 2">
+            <Menu.Item key="setting:3">Option 3</Menu.Item>
+            <Menu.Item key="setting:4">Option 4</Menu.Item>
+          </Menu.ItemGroup>
+        </SubMenu>
+        <Menu.Item key="alipay">
+          <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
+            Navigation Four - Link
+          </a>
+        </Menu.Item>
+      </Menu>
+    );
+  }
 }
 
-export default AppNavigationBar;
+
+export default withRouter(AppNavigationBar);

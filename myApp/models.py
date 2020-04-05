@@ -1,7 +1,18 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.utils.crypto import get_random_string
+import uuid
 # Create your models here.
+class Verification(models.Model):
+    verificationId = models.AutoField(primary_key=True)
+    email = models.TextField(editable=False)
+    code = models.CharField(max_length=6, editable=False, unique=True)
+
+    class Meta:
+        verbose_name = "Verification"
+        db_table = "Verification"
+
+
 # examples:
 # class Profile(models.Model):
 #     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -86,80 +97,80 @@ from django.contrib.auth.models import User
 #     class Meta:
 #         verbose_name = "Session"
 #         db_table = "Session"
-
-class Profile(models.Model):
-    profileId = models.AutoField(primary_key=True)
-    occupation = models.TextField(null=True)
-    description = models.TextField(null=True)
-    bio = models.TextField(null=True)
-    contactmessage = models.TextField(null=True)
-    website = models.TextField(null=True)
-    userId = models.OneToOneField(User, on_delete=models.CASCADE, db_column = "userId")
-
-
-    class Meta:
-        verbose_name = "Profile"
-        db_table = "Profile"
-
-class Address(models.Model):
-    addressId = models.AutoField(primary_key=True)
-    street = models.TextField(null=True)
-    city = models.TextField(null=True)
-    province = models.TextField(null=True)
-    zip = models.TextField(null=True)
-    # one action has one property
-    userId = models.OneToOneField(User, on_delete=models.CASCADE, db_column = "userId")
-
-    class Meta:
-        verbose_name = "Address"
-        db_table = "Address"
-
-class Education(models.Model):
-    educationId = models.AutoField(primary_key=True)
-    school = models.TextField(null=True)
-    degree = models.TextField(null=True)
-    graduated = models.TextField(null=True)
-    description = models.TextField(null=True)
-    # one action has one property
-    userId = models.OneToOneField(User, on_delete=models.CASCADE, db_column = "userId")
-
-    class Meta:
-        verbose_name = "Education"
-        db_table = "Education"
-
-class Work(models.Model):
-    workId = models.AutoField(primary_key=True)
-    company = models.TextField(null=True)
-    title = models.TextField(null=True)
-    years = models.TextField(null=True)
-    description = models.TextField(null=True)
-
-    userId = models.ForeignKey(User, related_name = 'work', on_delete=models.CASCADE, db_column = "userId")
-
-    class Meta:
-        verbose_name = "Work"
-        db_table = "Work"
-
-class Volunteer(models.Model):
-    volunteerId = models.AutoField(primary_key=True)
-    service = models.TextField(null=True)
-    jobs = models.TextField(null=True)
-    years = models.TextField(null=True)
-    description = models.TextField(null=True)
-
-    userId = models.ForeignKey(User, related_name = 'volunteer', on_delete=models.CASCADE, db_column = "userId")
-
-    class Meta:
-        verbose_name = "Volunteer"
-        db_table = "Volunteer"
-
-class Skill(models.Model):
-    skillId = models.AutoField(primary_key=True)
-    name = models.TextField(null=True)
-    level = models.TextField(null=True)
-
-    userId = models.ForeignKey(User, related_name = 'skill', on_delete=models.CASCADE, db_column = "userId")
-
-    class Meta:
-        verbose_name = "Skill"
-        db_table = "Skill"
+#
+# class Profile(models.Model):
+#     profileId = models.AutoField(primary_key=True)
+#     occupation = models.TextField(null=True)
+#     description = models.TextField(null=True)
+#     bio = models.TextField(null=True)
+#     contactmessage = models.TextField(null=True)
+#     website = models.TextField(null=True)
+#     userId = models.OneToOneField(User, on_delete=models.CASCADE, db_column = "userId")
+#
+#
+#     class Meta:
+#         verbose_name = "Profile"
+#         db_table = "Profile"
+#
+# class Address(models.Model):
+#     addressId = models.AutoField(primary_key=True)
+#     street = models.TextField(null=True)
+#     city = models.TextField(null=True)
+#     province = models.TextField(null=True)
+#     zip = models.TextField(null=True)
+#     # one action has one property
+#     userId = models.OneToOneField(User, on_delete=models.CASCADE, db_column = "userId")
+#
+#     class Meta:
+#         verbose_name = "Address"
+#         db_table = "Address"
+#
+# class Education(models.Model):
+#     educationId = models.AutoField(primary_key=True)
+#     school = models.TextField(null=True)
+#     degree = models.TextField(null=True)
+#     graduated = models.TextField(null=True)
+#     description = models.TextField(null=True)
+#     # one action has one property
+#     userId = models.OneToOneField(User, on_delete=models.CASCADE, db_column = "userId")
+#
+#     class Meta:
+#         verbose_name = "Education"
+#         db_table = "Education"
+#
+# class Work(models.Model):
+#     workId = models.AutoField(primary_key=True)
+#     company = models.TextField(null=True)
+#     title = models.TextField(null=True)
+#     years = models.TextField(null=True)
+#     description = models.TextField(null=True)
+#
+#     userId = models.ForeignKey(User, related_name = 'work', on_delete=models.CASCADE, db_column = "userId")
+#
+#     class Meta:
+#         verbose_name = "Work"
+#         db_table = "Work"
+#
+# class Volunteer(models.Model):
+#     volunteerId = models.AutoField(primary_key=True)
+#     service = models.TextField(null=True)
+#     jobs = models.TextField(null=True)
+#     years = models.TextField(null=True)
+#     description = models.TextField(null=True)
+#
+#     userId = models.ForeignKey(User, related_name = 'volunteer', on_delete=models.CASCADE, db_column = "userId")
+#
+#     class Meta:
+#         verbose_name = "Volunteer"
+#         db_table = "Volunteer"
+#
+# class Skill(models.Model):
+#     skillId = models.AutoField(primary_key=True)
+#     name = models.TextField(null=True)
+#     level = models.TextField(null=True)
+#
+#     userId = models.ForeignKey(User, related_name = 'skill', on_delete=models.CASCADE, db_column = "userId")
+#
+#     class Meta:
+#         verbose_name = "Skill"
+#         db_table = "Skill"

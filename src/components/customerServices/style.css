@@ -1,0 +1,32 @@
+.text{
+  color: black;
+  font-size:16px
+}
+
+.cardTitle{
+  color:#5F70B8;
+  font-size:25px;
+  font-weight: bold
+}
+
+.divClass{
+  display: grid;
+  margin: 0 auto;
+  width: 300;
+}
+
+.card{
+  background-color: rgba(255, 255, 255, 0.0);
+  width: 400;
+}
+
+.company{
+  font-size:20px;
+  font-weight: bold;
+  color:black
+}
+
+.link{
+  font-size:16px;
+  font-weight: bold
+}

@@ -1,0 +1,12 @@
+.email-form {
+  max-width: 40rem;
+  margin: 1rem auto;
+  background-color: aliceblue;
+  padding: 1rem;
+  border-radius: 5px;
+  align-self: center;
+
+}
+.email-form-button {
+  width: 100%;
+}

@@ -11,11 +11,33 @@ const copyrightString = "Canada Training Group";
 // and a facebook icon.
 const footer = (style1, style2, copyrightString) => {
   return (
-    <Footer className="layout-footer" style={style1}>
+    <Footer
+      className="layout-footer"
+      style={{
+        display: 'flex',
+        justifyContent:'center',
+        alignItems:'center'
+      }}
+    >
       <div className="layout-footer-content" style={style2}>
         <div className="footerContact">
-          <a href="./customerServices">Contact us</a>
-          <div>
+          <a
+            href="./customerServices"
+            style={{
+              display: 'flex',
+              justifyContent:'center',
+              alignItems:'center'
+            }}
+          >
+            Contact us
+          </a>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent:'center',
+              alignItems:'center'
+            }}
+          >
             <Icon
               type="twitter-square"
               theme="filled"

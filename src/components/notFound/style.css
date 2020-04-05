@@ -1,0 +1,10 @@
+.layout-header{
+    width: 100%;
+    display: flex;
+    background-position: center;
+}
+.notFound{
+    justify-content: center;
+    background-size: cover;
+    text-align: center;
+}

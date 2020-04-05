@@ -8,11 +8,9 @@ export function fetchResume(id) {
 
     axios.get(URL_PREFIX + "/api/user/" + id + "/" )
       .then((response) => {
-        console.log(response, 'response', URL_PREFIX + "/api/user/" + id);
         dispatch({type: "FETCH_TWEETS_FULFILLED", payload: response.data})
       })
       .catch((err) => {
-        console.log(err, 'err', URL_PREFIX + "/api/user/" + id);
         dispatch({type: "FETCH_TWEETS_REJECTED", payload: err})
       })
   }

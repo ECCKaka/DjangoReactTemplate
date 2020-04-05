@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import Button from 'antd/es/button';
 import './App.css';
 import connect from 'redux-connect-decorator'
-import { fetchUser } from "./actions/userActions"
 import { fetchResume } from "./actions/resumeActions"
+import Registration from './components/register'
 // import Template from './components/Header';
 import Login from './components/login'
+import Home from './components/home'
+import AppNotFound from './components/notFound'
+import CustomerServices from './components/customerServices'
 import {
   BrowserRouter as Router,
   Switch,
@@ -21,27 +24,35 @@ import {
   };
 })
 class App extends Component {
-
-    fetchResume() {
-      this.props.dispatch(fetchResume(1))
+  constructor(props) {
+    super(props);
+    // Don't call this.setState() here!
+    if (sessionStorage.getItem('jwtToken')!==null && this.props.user===null){
+      sessionStorage.removeItem('jwtToken');
     }
-
-    render() {
-      const { user, resume } = this.props;
-      console.log(this.props);
-      return (
-        <Router>
-          <Switch>
-            <Route exact path='/home'>
-              <Button onClick={this.fetchResume.bind(this)}>load resume</Button>
-            </Route>
-            <Route exact path='/login'>
-              <Login/>
-            </Route>
-          </Switch>
-        </Router>
-      )
-    }
+  }
+  render() {
+    const { user, resume } = this.props;
+    return (
+      <Router>
+        <Switch>
+          <Route exact path='/home'>
+            <Home/>
+          </Route>
+          <Route exact path='/'>
+            <Login/>
+          </Route>
+          <Route exact path='/register'>
+            <Registration/>
+          </Route>
+          <Route path='/customerServices'>
+            <CustomerServices />
+          </Route>
+          <Route component={AppNotFound}></Route>
+        </Switch>
+      </Router>
+    )
+  }
 }
 
 export default App;
