@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  db:
+      image: postgres
+      environment:
+        - POSTGRES_DB=postgres
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+  web:
+    build: .
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    command:
+      - /bin/bash
+      - -c
+      - |
+        sleep 10
+        python manage.py makemigrations
+        sleep 2
+        python manage.py migrate
+        sleep 2
+        python manage.py runserver 0.0.0.0:8000
