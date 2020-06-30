@@ -109,12 +109,12 @@ EMAIL_PORT = 587
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'djangoTemplate',
-        'USER': 'zuofu',
-        'PASSWORD': 'lizuofu8426;',
-        'HOST': '127.0.0.1',
-        'PORT': '3306'
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }
 
